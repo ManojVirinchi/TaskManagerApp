@@ -1,10 +1,13 @@
 package com.taskmanager.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties("tasks")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
