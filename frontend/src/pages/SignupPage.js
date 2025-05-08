@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import codingImage from '../undraw_progress-indicator_c14b.svg';
 import gif from '../assets/Animation.gif';
+import axios from 'axios';
 
 function Signup() {
 
@@ -9,8 +10,20 @@ function Signup() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Username:', username);
-        console.log('Password:', password);
+        axios.post('http://localhost:8080/api/users/create', {
+                username,
+                password
+                })
+                .then(response => {
+                console.log("User created:", response.data);
+                window.location.href = '/';
+                // Redirect or show success message
+                })
+                .catch(error => {
+                console.error("Signup failed:", error);
+                alert("Signup failed");
+});
+
       };
     
       return (
@@ -95,7 +108,7 @@ function Signup() {
               <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '14px', color: '#555' }}>
                 Already have an account?{' '}
                 <a href="/" style={{ color: '#4f46e5', fontWeight: 'bold', textDecoration: 'none' }}>
-                  Sign up
+                  Login In
                 </a>
               </p>
             </form>

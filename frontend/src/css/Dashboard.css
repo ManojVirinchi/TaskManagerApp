@@ -1,0 +1,139 @@
+.dashboard-container {
+    padding: 20px;
+    min-height: 50vh;
+  
+    background-image: url('../assets/Dashboard.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center; /* ⬅️ Horizontally and vertically centered */
+  }
+  
+  
+  .dashboard-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .create-btn {
+    background-color: #007bff;
+  }
+  
+  .logout-btn {
+    background-color: #dc3545;
+  }
+  
+  .cancel-btn {
+    background-color: grey;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-desc {
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .task-actions {
+    display: flex;
+    /* justify-content: space-between; */
+    margin-top: 15px;
+  }
+  
+  .edit-btn {
+    background-color: #39b8d4;
+    color: #000;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    margin-right: 5px;
+    transition: background-color 0.2s;
+  }
+  
+  .edit-btn:hover {
+    background-color: #249195;
+  }
+  
+  .delete-btn {
+    background-color: #ac434e;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    margin-left: 5px;
+    transition: background-color 0.2s;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  

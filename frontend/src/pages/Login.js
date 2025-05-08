@@ -1,20 +1,34 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import codingImage from '../undraw_progress-indicator_c14b.svg';
 import gif from '../assets/Animation.gif';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
+
+    axios.post('http://localhost:8080/api/users/login', { username, password })
+      .then(response => {
+        console.log('Login successful:', response.data);
+        sessionStorage.setItem("userId", response.data.id);
+        sessionStorage.setItem("username", username);
+        setError('');
+        navigate('/dashboard'); // redirect on success
+      })
+      .catch(error => {
+        console.error('Login failed:', error);
+        setError('Invalid username or password');
+      });
   };
 
   return (
     <div style={{ display: 'flex', height: '100vh', fontFamily: 'Arial, sans-serif' }}>
-      
       {/* Left Side: Illustration */}
       <div style={{ flex: 1, backgroundColor: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img 
@@ -30,15 +44,14 @@ function Login() {
           
           {/* Small GIF */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-            <img 
-              src={gif}
-              alt="Login Animation" 
-              style={{ width: '80px', height: 'auto' }}
-            />
+            <img src={gif} alt="Login Animation" style={{ width: '80px', height: 'auto' }} />
           </div>
 
           {/* Heading */}
           <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Login</h2>
+
+          {/* Error Message */}
+          {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
           {/* Username Input */}
           <input
@@ -99,7 +112,6 @@ function Login() {
           </p>
         </form>
       </div>
-
     </div>
   );
 }
